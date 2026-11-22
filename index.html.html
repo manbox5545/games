@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090b18">
+  <title>MPOXEL GAMES — Made by Manvir</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap');
+    :root{--bg:#080a16;--cyan:#63f5ff;--violet:#a78bfa;--pink:#ff70c8;--white:#f5f7ff}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;color:var(--white);font-family:Inter,system-ui,sans-serif;background:radial-gradient(ellipse at 15% 15%,#1c2550 0,transparent 38%),radial-gradient(ellipse at 85% 75%,#301447 0,transparent 38%),var(--bg);overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,black,transparent 90%)}
+    .orb{position:fixed;width:320px;height:320px;border-radius:50%;filter:blur(90px);opacity:.18;pointer-events:none;animation:drift 12s ease-in-out infinite alternate}
+    .orb.one{background:#00d9ff;top:5%;left:-160px}.orb.two{background:#a855f7;right:-170px;bottom:0;animation-delay:-5s}
+    @keyframes drift{to{transform:translate(70px,45px) scale(1.2)}}
+    .wrap{position:relative;z-index:1;width:min(1120px,calc(100% - 40px));margin:auto;padding:30px 0 42px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px;font-family:Orbitron,sans-serif;font-weight:900;letter-spacing:2px}
+    .brand-mark{width:42px;height:42px;display:grid;place-items:center;border:1px solid #69efff88;border-radius:13px;color:var(--cyan);background:linear-gradient(145deg,#ffffff18,#ffffff03);box-shadow:0 0 25px #37eaff30,inset 0 0 16px #37eaff18}
+    .brand small{display:block;font:600 9px Inter,sans-serif;letter-spacing:3px;color:#9ca9cb;margin-top:4px}
+    .status{font-size:11px;letter-spacing:1.5px;color:#b8c4e6;border:1px solid #ffffff20;background:#ffffff08;padding:9px 13px;border-radius:30px}
+    .status i{display:inline-block;width:7px;height:7px;background:#59f5a5;border-radius:50%;margin-right:7px;box-shadow:0 0 10px #59f5a5}
+    .hero{text-align:center;padding:76px 0 48px}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:8px 13px;border:1px solid #8cefff45;border-radius:30px;background:#55dff10d;color:#9bf6ff;font-size:10px;font-weight:800;letter-spacing:2.4px;text-transform:uppercase}
+    h1{font-family:Orbitron,sans-serif;font-size:clamp(35px,7vw,76px);line-height:1.12;letter-spacing:-2px;margin:22px 0 12px;text-shadow:0 0 34px #8b5cf644}
+    h1 .gradient{background:linear-gradient(90deg,#75f6ff 5%,#b5a2ff 50%,#ff8bd8 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .subtitle{margin:0;color:#aab4d1;font-size:clamp(14px,2vw,17px);letter-spacing:.3px}
+    .byline{margin-top:16px;color:#7f8cac;font-size:11px;letter-spacing:3px;text-transform:uppercase}
+    .byline strong{color:#e2d9ff}
+    .section-head{display:flex;align-items:end;justify-content:space-between;margin:12px 0 18px;gap:12px}
+    .section-head h2{font:700 14px Orbitron,sans-serif;letter-spacing:2px;margin:0}
+    .section-head span{color:#7481a4;font-size:11px;letter-spacing:1px}
+    .games{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;perspective:1200px}
+    .game-card{--accent:var(--cyan);position:relative;min-height:360px;display:flex;flex-direction:column;justify-content:space-between;padding:26px;border:1px solid #ffffff20;border-radius:24px;overflow:hidden;text-decoration:none;color:inherit;background:linear-gradient(145deg,#ffffff13,#ffffff04 55%),#10152a;box-shadow:0 25px 65px #0007,inset 0 1px 0 #ffffff20;transform-style:preserve-3d;transition:transform .35s ease,border-color .35s,box-shadow .35s}
+    .game-card.bike{--accent:var(--pink)}
+    .game-card:before{content:"";position:absolute;inset:-1px;background:radial-gradient(circle at 80% 15%,color-mix(in srgb,var(--accent) 22%,transparent),transparent 45%);pointer-events:none}
+    .game-card:after{content:"";position:absolute;width:220px;height:220px;border:1px solid color-mix(in srgb,var(--accent) 23%,transparent);border-radius:50%;right:-85px;top:55px;box-shadow:0 0 0 22px color-mix(in srgb,var(--accent) 5%,transparent),0 0 0 45px color-mix(in srgb,var(--accent) 4%,transparent);pointer-events:none}
+    .game-card:hover{transform:translateY(-10px) rotateX(3deg) rotateY(-2deg);border-color:color-mix(in srgb,var(--accent) 70%,white);box-shadow:0 35px 80px #0009,0 0 35px color-mix(in srgb,var(--accent) 16%,transparent)}
+    .card-top,.card-bottom,.art,.tag{position:relative;z-index:1}
+    .tag{display:inline-block;font-size:9px;font-weight:800;letter-spacing:2px;color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 40%,transparent);background:color-mix(in srgb,var(--accent) 9%,transparent);padding:7px 10px;border-radius:30px}
+    .art{height:170px;display:grid;place-items:center;transform:translateZ(35px)}
+    .art-icon{font-size:105px;line-height:1;filter:drop-shadow(0 15px 22px #0009);transition:transform .4s}
+    .game-card:hover .art-icon{transform:translateY(-7px) rotate(-5deg) scale(1.08)}
+    .chess .art-icon{color:#e6faff;text-shadow:0 0 30px #56eaff88}
+    .bike .art-icon{filter:drop-shadow(0 12px 22px #ff4eb966)}
+    .card-bottom h3{font:800 25px Orbitron,sans-serif;letter-spacing:1px;margin:0 0 9px}
+    .card-bottom p{margin:0;color:#a4afce;font-size:13px;line-height:1.6;max-width:330px}
+    .play{display:flex;align-items:center;justify-content:space-between;margin-top:22px;padding-top:15px;border-top:1px solid #ffffff18;color:var(--accent);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+    .arrow{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--accent) 13%,transparent);border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);font-size:18px;transition:transform .25s}
+    .game-card:hover .arrow{transform:translateX(4px)}
+    .bottom-note{display:flex;justify-content:center;gap:8px;align-items:center;margin-top:36px;color:#657293;font-size:10px;letter-spacing:1.8px;text-align:center}
+    .bottom-note b{color:#aab5d5;font-weight:700}
+    @media(max-width:700px){.wrap{width:min(100% - 28px,520px);padding-top:20px}.hero{padding:62px 0 36px}.games{grid-template-columns:1fr;gap:17px}.game-card{min-height:330px;padding:22px}.art{height:145px}.art-icon{font-size:90px}.status{font-size:9px;padding:8px 10px}.brand{font-size:13px}.brand-mark{width:38px;height:38px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <div class="orb one"></div><div class="orb two"></div>
+  <main class="wrap">
+    <header>
+      <div class="brand"><div class="brand-mark">M</div><div>MPOXEL<small>ARCADE SYSTEM</small></div></div>
+      <div class="status"><i></i> GAMES ONLINE</div>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow">✦ THE MPOXEL PLAY ZONE ✦</div>
+      <h1><span class="gradient">MPOXEL GAMES</span></h1>
+      <p class="subtitle">Choose your game. Enter the experience.</p>
+      <div class="byline">A collection <strong>made by Manvir</strong></div>
+    </section>
+
+    <section aria-label="Select a game">
+      <div class="section-head"><h2>SELECT YOUR GAME</h2><span>02 EXPERIENCES AVAILABLE</span></div>
+      <div class="games">
+        <a class="game-card chess" href="/chess/index.html" aria-label="Play MPOXEL Chess">
+          <div class="card-top"><span class="tag">01 / STRATEGY</span></div>
+          <div class="art"><div class="art-icon" aria-hidden="true">♞</div></div>
+          <div class="card-bottom">
+            <h3>CHESS</h3>
+            <p>Think ahead, plan your moves, and outsmart your opponent on the board.</p>
+            <div class="play"><span>Play chess</span><span class="arrow">↗</span></div>
+          </div>
+        </a>
+
+        <a class="game-card bike" href="/bike/game.html" aria-label="Play MPOXEL Bike Game">
+          <div class="card-top"><span class="tag">02 / RACING</span></div>
+          <div class="art"><div class="art-icon" aria-hidden="true">🏍️</div></div>
+          <div class="card-bottom">
+            <h3>BIKE RUSH</h3>
+            <p>Get on the bike, hit the road, and see how far your skills can take you.</p>
+            <div class="play"><span>Start riding</span><span class="arrow">↗</span></div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <footer class="bottom-note">BUILT WITH <b>✦</b> BY MANVIR <b>·</b> MPOXEL © <span id="year"></span></footer>
+  </main>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Subtle pointer-based 3D tilt on desktop; disabled for touch and reduced-motion users.
+    if (matchMedia('(hover: hover) and (pointer: fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.game-card').forEach(card => {
+        card.addEventListener('pointermove', event => {
+          const r = card.getBoundingClientRect();
+          const x = (event.clientX - r.left) / r.width - .5;
+          const y = (event.clientY - r.top) / r.height - .5;
+          card.style.transform = `translateY(-8px) rotateX(${ -y * 7 }deg) rotateY(${ x * 7 }deg)`;
+        });
+        card.addEventListener('pointerleave', () => card.style.removeProperty('transform'));
+      });
+    }
+  </script>
+</body>
+</html>
